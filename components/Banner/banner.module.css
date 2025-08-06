@@ -1,0 +1,14 @@
+.bannerDesktop {
+  display: none;
+}
+.bannerMobile {
+  display: block;
+}
+@media (min-width: 48rem) {
+  div.bannerDesktop {
+    display: block;
+  }
+  div.bannerMobile {
+    display: none;
+  }
+}

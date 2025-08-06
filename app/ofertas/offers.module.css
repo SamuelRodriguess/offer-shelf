@@ -1,0 +1,12 @@
+.productTitle {
+  font-weight: 600;
+}
+
+@media (min-width: 80rem) {
+  .productTitle {
+    width: 80rem;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box; 
+  }
+}
