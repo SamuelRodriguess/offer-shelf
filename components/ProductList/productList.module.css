@@ -1,9 +1,28 @@
+  .productArrowLeft,
+  .productArrowRight {
+    position: absolute;
+    top: -2rem;
+  }
+  .productArrowRight {
+    right: 0;
+  }
 @media (min-width: 80rem) {
   .section {
     width: 80rem;
     margin: 0 auto;
     padding: 1rem;
-    box-sizing: border-box; 
-    position: relative
+    box-sizing: border-box;
+    position: relative;
+  }
+  .productArrowRight {
+    right: -2rem;
+  }
+  .productArrowLeft {
+    left: -2rem;
+  }
+  .productArrowLeft,
+  .productArrowRight {
+    top: 50%;
+    transform: translateY(-50%);
   }
 }

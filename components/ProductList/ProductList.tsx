@@ -11,46 +11,43 @@ interface ProductListProps {
 
 export function ProductList({ products, itemsToShow }: ProductListProps) {
   const totalPages = Math.ceil(products.length / itemsToShow);
-
   const [page, setPage] = useState(0);
   const [visibleProducts, setVisibleProducts] = useState(
     products.slice(0, itemsToShow)
   );
 
   useEffect(() => {
-
     const startIndex = page * itemsToShow;
     const endIndex = startIndex + itemsToShow;
     setVisibleProducts(products.slice(startIndex, endIndex));
   }, [page, itemsToShow, products]);
 
-  const changePage = (newPage: number) => {
-    setTimeout(() => {
-      setPage(newPage);
-    }, 300);
-  };
-
   const handlePrev = () => {
-    if (page > 0) changePage(page - 1);
+    if (page > 0) {
+      setPage(page - 1);
+    }
   };
 
   const handleNext = () => {
-    if (page < totalPages - 1) changePage(page + 1);
+    if (page < totalPages - 1) {
+      setPage(page + 1);
+    }
   };
 
+  const arrowButtonBaseStyles = `text-6xl w-8 h-10 flex items-center 
+  justify-center text-orange-500 disabled:text-gray-400 
+  disabled:cursor-not-allowed cursor-pointer`;
+
   return (
-    <section className={`relative flex flex-row items-center ${styles.section}`}>
+    <section
+      className={`relative flex flex-row items-center ${styles.section}`}
+    >
       <button
         onClick={handlePrev}
         disabled={page === 0}
         aria-label="Previous products"
-        className="text-6xl w-8 h-10 flex items-center justify-center text-orange-500 disabled:text-gray-400 disabled:cursor-not-allowed cursor-pointer"
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "-2rem",
-          transform: "translateY(-50%)",
-        }}
+        className={`${arrowButtonBaseStyles}
+          ${styles.productArrowLeft}`}
       >
         &#8592;
       </button>
@@ -72,13 +69,8 @@ export function ProductList({ products, itemsToShow }: ProductListProps) {
         onClick={handleNext}
         disabled={page === totalPages - 1}
         aria-label="Next products"
-        className="text-6xl w-8 h-10 flex items-center justify-center text-orange-500 disabled:text-gray-400 disabled:cursor-not-allowed cursor-pointer"
-        style={{
-          position: "absolute",
-          top: "50%",
-          right: "-2rem",
-          transform: "translateY(-50%)",
-        }}
+        className={`${arrowButtonBaseStyles}
+          ${styles.productArrowRight}`}
       >
         &#8594;
       </button>
