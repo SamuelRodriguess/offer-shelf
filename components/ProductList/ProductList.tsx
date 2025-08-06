@@ -1,6 +1,6 @@
 import { ProductCard } from "../ProductCard/ProductCard";
-import { v4 as uuidv4 } from "uuid";
 import styles from "../ProductList/productList.module.css";
+import { v4 as uuidv4 } from "uuid";
 import { useState, useEffect } from "react";
 import { Product } from "../../hooks/useProductList";
 
@@ -16,22 +16,17 @@ export function ProductList({ products, itemsToShow }: ProductListProps) {
   const [visibleProducts, setVisibleProducts] = useState(
     products.slice(0, itemsToShow)
   );
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
-    if (isTransitioning) {
-      return;
-    }
+
     const startIndex = page * itemsToShow;
     const endIndex = startIndex + itemsToShow;
     setVisibleProducts(products.slice(startIndex, endIndex));
-  }, [page, itemsToShow, products, isTransitioning]);
+  }, [page, itemsToShow, products]);
 
   const changePage = (newPage: number) => {
-    setIsTransitioning(true);
     setTimeout(() => {
       setPage(newPage);
-      setIsTransitioning(false); 
     }, 300);
   };
 
@@ -59,10 +54,9 @@ export function ProductList({ products, itemsToShow }: ProductListProps) {
       >
         &#8592;
       </button>
+
       <div
-        className={`flex flex-row gap-4 transition-opacity duration-300 ease-in-out ${
-          isTransitioning ? "opacity-0" : "opacity-100"
-        }`}
+        className={`flex flex-row gap-4 transition-opacity duration-300 ease-in-out`}
       >
         {visibleProducts.map((product) => (
           <ProductCard
@@ -73,6 +67,7 @@ export function ProductList({ products, itemsToShow }: ProductListProps) {
           />
         ))}
       </div>
+
       <button
         onClick={handleNext}
         disabled={page === totalPages - 1}
