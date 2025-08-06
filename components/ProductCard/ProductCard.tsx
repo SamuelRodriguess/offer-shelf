@@ -13,7 +13,7 @@ export function ProductCard({ title, price, image }: ProductCardProps) {
   return (
     <div
       className={`flex flex-col items-start p-4
-        rounded shadow-lg m-2 ${styles.productCard}
+        rounded shadow-lg justify-between ${styles.productCard}
       `}
     >
       <Image

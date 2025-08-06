@@ -1,7 +1,9 @@
 .productCard {
   font-size: 0.75rem;
+  width: 12.2rem;
 }
 
 .productImage {
-  margin: 0 auto 0.75rem;
+  margin: 0 auto;
+  height: 200px;
 }

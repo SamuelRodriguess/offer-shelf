@@ -9,7 +9,7 @@ import { Title } from "../../components/Title/Title";
 import { useProductList } from "../../hooks/useProductList";
 
 export default function Page() {
-  const { productsData  } = useProductList()
+  const { productsData } = useProductList();
   const itemsToShow = useIsMobile() ? 2 : 6;
   if (!productsData) return;
   return (
