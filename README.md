@@ -1,5 +1,7 @@
 # Offer Shelf
 
+<img width="1353" height="505" alt="image" src="https://github.com/user-attachments/assets/d6682178-7ea9-4b3a-be79-f44372eaf11a" />
+
 ## Features
 
 - Fetches product data from a public API.
