@@ -38,19 +38,21 @@ export function ProductList({ products, itemsToShow }: ProductListProps) {
 
   return (
     <section
-      className={`relative flex flex-row items-center ${styles.section}`}
+      className={`relative flex flex-row items-center ${styles.productListSection}`}
     >
-      <button
-        onClick={handlePrev}
-        disabled={currentPage === 0}
-        aria-label="Previous products"
-        className={`${styles.arrowButtonBaseStyles}
+      <div className={`shadow-lg ${styles.productListArrowButton}`}>
+        <button
+          onClick={handlePrev}
+          disabled={currentPage === 0}
+          aria-label="Previous products"
+          className={`${styles.arrowButtonBaseStyles}
           ${styles.productArrowLeft}`}
-      >
-        &#8592;
-      </button>
+        >
+          &#8592;
+        </button>
+      </div>
 
-      <div className={`${styles.productList}`}>
+      <div className={`${styles.productListCard}`}>
         {visibleProducts.map((product, idx) => (
           <ProductCard
             key={`${product.id}-${idx}`}
@@ -61,15 +63,17 @@ export function ProductList({ products, itemsToShow }: ProductListProps) {
         ))}
       </div>
 
-      <button
-        onClick={handleNext}
-        disabled={currentPage === totalPages - 1}
-        aria-label="Next products"
-        className={`${styles.arrowButtonBaseStyles}
+      <div className={`${styles.productListArrowButton}`}>
+        <button
+          onClick={handleNext}
+          disabled={currentPage === totalPages - 1}
+          aria-label="Next products"
+          className={`${styles.arrowButtonBaseStyles}
           ${styles.productArrowRight}`}
-      >
-        &#8594;
-      </button>
+        >
+          &#8594;
+        </button>
+      </div>
     </section>
   );
 }

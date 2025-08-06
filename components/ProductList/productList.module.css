@@ -1,9 +1,4 @@
-.productArrowLeft,
-.productArrowRight {
-  position: absolute;
-  display: none;
-}
-.productList {
+.productListSection .productListCard {
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -11,43 +6,47 @@
   scroll-behavior: smooth;
 }
 
-.arrowButtonBaseStyles {
-  font-size: 3.75rem;
-  width: 2rem;
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #f97316;
+.productListArrowButton {
+  display: none;
+}
+
+.productListArrowButton .arrowButtonBaseStyles {
+  font-size: 1.75rem;
   cursor: pointer;
 }
 
-.arrowButtonBaseStyles:disabled {
+.productListArrowButton .arrowButtonBaseStyles:disabled {
   color: #9ca3af;
   cursor: not-allowed;
 }
 
 @media (min-width: 80rem) {
-  .section {
+  .productListArrowButton {
+  height: 1.875rem;
+  width: 1.875rem;
+  border-radius: 50%;
+  background-color: whitesmoke;
+}
+  .productListSection {
     width: 80rem;
     margin: 0 auto;
     padding: 1rem;
     box-sizing: border-box;
     position: relative;
   }
-  .productList {
+  .productListSection .productListCard {
     overflow-x: hidden;
   }
-  .productArrowRight {
+  .productListSection .productListArrowButton .productArrowRight {
     right: -2rem;
   }
-  .productArrowLeft {
+  .productListSection .productListArrowButton .productArrowLeft {
     left: -2rem;
   }
-  .productArrowLeft,
-  .productArrowRight {
+  .productListSection .productListArrowButton .productArrowLeft,
+  .productListSection .productListArrowButton .productArrowRight {
     display: block;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-25%);
   }
 }
