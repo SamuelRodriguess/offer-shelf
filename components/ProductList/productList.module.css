@@ -11,6 +11,22 @@
   scroll-behavior: smooth;
 }
 
+.arrowButtonBaseStyles {
+  font-size: 3.75rem;
+  width: 2rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f97316;
+  cursor: pointer;
+}
+
+.arrowButtonBaseStyles:disabled {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
 @media (min-width: 80rem) {
   .section {
     width: 80rem;

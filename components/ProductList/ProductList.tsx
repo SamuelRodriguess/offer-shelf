@@ -1,8 +1,7 @@
-import { ProductCard } from "../ProductCard/ProductCard";
-import styles from "../ProductList/productList.module.css";
-import { v4 as uuidv4 } from "uuid";
 import { useState, useEffect } from "react";
 import { Product } from "../../hooks/useProductList";
+import { ProductCard } from "../ProductCard/ProductCard";
+import styles from "../ProductList/productList.module.css";
 
 interface ProductListProps {
   products: Product[];
@@ -12,6 +11,7 @@ interface ProductListProps {
 export function ProductList({ products, itemsToShow }: ProductListProps) {
   const totalPages = Math.ceil(products.length / itemsToShow);
   const [currentPage, setCurrentPage] = useState(0);
+
   const [visibleProducts, setVisibleProducts] = useState(
     products.slice(0, itemsToShow)
   );
@@ -36,10 +36,6 @@ export function ProductList({ products, itemsToShow }: ProductListProps) {
     }
   };
 
-  const arrowButtonBaseStyles = `text-6xl w-8 h-10 flex items-center 
-  justify-center text-orange-500 disabled:text-gray-400 
-  disabled:cursor-not-allowed cursor-pointer`;
-
   return (
     <section
       className={`relative flex flex-row items-center ${styles.section}`}
@@ -48,18 +44,16 @@ export function ProductList({ products, itemsToShow }: ProductListProps) {
         onClick={handlePrev}
         disabled={currentPage === 0}
         aria-label="Previous products"
-        className={`${arrowButtonBaseStyles}
+        className={`${styles.arrowButtonBaseStyles}
           ${styles.productArrowLeft}`}
       >
         &#8592;
       </button>
 
-      <div
-        className={`${styles.productList}`}
-      >
-        {visibleProducts.map((product) => (
+      <div className={`${styles.productList}`}>
+        {visibleProducts.map((product, idx) => (
           <ProductCard
-            key={`${product.id}${uuidv4()}`}
+            key={`${product.id}-${idx}`}
             image={product.image}
             title={product.title}
             price={product.price}
@@ -71,7 +65,7 @@ export function ProductList({ products, itemsToShow }: ProductListProps) {
         onClick={handleNext}
         disabled={currentPage === totalPages - 1}
         aria-label="Next products"
-        className={`${arrowButtonBaseStyles}
+        className={`${styles.arrowButtonBaseStyles}
           ${styles.productArrowRight}`}
       >
         &#8594;
