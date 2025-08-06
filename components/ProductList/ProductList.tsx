@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Product } from "../../hooks/useProductList";
-import { ProductCard } from "../ProductCard/ProductCard";
+import ProductCard from "../ProductCard/ProductCard";
 import styles from "../ProductList/productList.module.css";
 
 interface ProductListProps {

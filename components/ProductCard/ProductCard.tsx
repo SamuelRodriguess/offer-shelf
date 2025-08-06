@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { formatPrice } from "../../utils/formatPrice";
 import styles from "../ProductCard/productCard.module.css";
+import { memo } from "react";
 
 interface ProductCardProps {
   title: string;
@@ -9,7 +10,7 @@ interface ProductCardProps {
   onClick?: () => void;
 }
 
-export function ProductCard({ title, price, image }: ProductCardProps) {
+function ProductCard({ title, price, image }: ProductCardProps) {
   return (
     <div
       className={`flex flex-col items-start p-4
@@ -35,3 +36,5 @@ export function ProductCard({ title, price, image }: ProductCardProps) {
     </div>
   );
 }
+
+export default memo(ProductCard);

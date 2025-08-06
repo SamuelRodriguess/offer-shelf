@@ -8,10 +8,18 @@ import { ProductList } from "../../components/ProductList/ProductList";
 import { Title } from "../../components/Title/Title";
 import { useProductList } from "../../hooks/useProductList";
 
+const ITEMS_DESKTOP = 6;
+
 export default function Page() {
   const { productsData } = useProductList();
-  const itemsToShow = useIsMobile(1280) && productsData ? productsData.length : 6;
-  if (!productsData) return;
+  const isMobile = useIsMobile(1280);
+
+  if (!productsData || productsData.length === 0) {
+      return null;
+  }
+
+  const itemsToShow = isMobile ? productsData.length : ITEMS_DESKTOP;
+
   return (
     <>
       <Banner bannerImg={bannerImg} bannerImgMobile={bannerImgMobile} />
