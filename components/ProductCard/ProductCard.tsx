@@ -23,7 +23,7 @@ export function ProductCard({ title, price, image }: ProductCardProps) {
         height={200}
         className={`${styles.productImage}`}
       />
-      <h3>{title}</h3>
+      <h3 className={`${styles.productName}`}>{title}</h3>
       <p className="pb-4">{formatPrice(price)}</p>
       <button
         className={`cursor-pointer w-full 

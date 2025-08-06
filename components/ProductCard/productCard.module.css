@@ -1,9 +1,30 @@
 .productCard {
   font-size: 0.75rem;
+  margin-bottom: 1rem;
   width: 12.2rem;
+}
+
+.productCard:last-child {
+  margin-right: 1rem;
 }
 
 .productImage {
   margin: 0 auto;
-  height: 200px;
+  height: 12.5rem;
+  max-width: 9rem;
+}
+
+h3.productName{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1rem;
+}
+
+@media (min-width: 80rem) {
+  .productCard:last-child {
+    margin-right: 0;
+  }
 }

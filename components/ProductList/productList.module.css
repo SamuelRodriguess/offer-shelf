@@ -1,11 +1,16 @@
-  .productArrowLeft,
-  .productArrowRight {
-    position: absolute;
-    top: -2rem;
-  }
-  .productArrowRight {
-    right: 0;
-  }
+.productArrowLeft,
+.productArrowRight {
+  position: absolute;
+  display: none;
+}
+.productList {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
 @media (min-width: 80rem) {
   .section {
     width: 80rem;
@@ -13,6 +18,9 @@
     padding: 1rem;
     box-sizing: border-box;
     position: relative;
+  }
+  .productList {
+    overflow-x: hidden;
   }
   .productArrowRight {
     right: -2rem;
@@ -22,6 +30,7 @@
   }
   .productArrowLeft,
   .productArrowRight {
+    display: block;
     top: 50%;
     transform: translateY(-50%);
   }

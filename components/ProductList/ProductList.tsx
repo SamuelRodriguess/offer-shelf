@@ -11,26 +11,28 @@ interface ProductListProps {
 
 export function ProductList({ products, itemsToShow }: ProductListProps) {
   const totalPages = Math.ceil(products.length / itemsToShow);
-  const [page, setPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
   const [visibleProducts, setVisibleProducts] = useState(
     products.slice(0, itemsToShow)
   );
 
   useEffect(() => {
-    const startIndex = page * itemsToShow;
+    const startIndex = currentPage * itemsToShow;
     const endIndex = startIndex + itemsToShow;
     setVisibleProducts(products.slice(startIndex, endIndex));
-  }, [page, itemsToShow, products]);
+  }, [currentPage, itemsToShow, products]);
 
   const handlePrev = () => {
-    if (page > 0) {
-      setPage(page - 1);
+    const isAfterFirstPage = currentPage > 0;
+    if (isAfterFirstPage) {
+      setCurrentPage(currentPage - 1);
     }
   };
 
   const handleNext = () => {
-    if (page < totalPages - 1) {
-      setPage(page + 1);
+    const isBeforeLastPage = currentPage < totalPages - 1;
+    if (isBeforeLastPage) {
+      setCurrentPage(currentPage + 1);
     }
   };
 
@@ -44,7 +46,7 @@ export function ProductList({ products, itemsToShow }: ProductListProps) {
     >
       <button
         onClick={handlePrev}
-        disabled={page === 0}
+        disabled={currentPage === 0}
         aria-label="Previous products"
         className={`${arrowButtonBaseStyles}
           ${styles.productArrowLeft}`}
@@ -53,7 +55,7 @@ export function ProductList({ products, itemsToShow }: ProductListProps) {
       </button>
 
       <div
-        className={`flex flex-row gap-4 transition-opacity duration-300 ease-in-out`}
+        className={`${styles.productList}`}
       >
         {visibleProducts.map((product) => (
           <ProductCard
@@ -67,7 +69,7 @@ export function ProductList({ products, itemsToShow }: ProductListProps) {
 
       <button
         onClick={handleNext}
-        disabled={page === totalPages - 1}
+        disabled={currentPage === totalPages - 1}
         aria-label="Next products"
         className={`${arrowButtonBaseStyles}
           ${styles.productArrowRight}`}

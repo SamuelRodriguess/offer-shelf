@@ -10,13 +10,20 @@ import { useProductList } from "../../hooks/useProductList";
 
 export default function Page() {
   const { productsData } = useProductList();
-  const itemsToShow = useIsMobile() ? 2 : 6;
+  const itemsToShow = useIsMobile() && productsData ? productsData.length : 6;
   if (!productsData) return;
   return (
     <>
       <Banner bannerImg={bannerImg} bannerImgMobile={bannerImgMobile} />
       <Title text="Ofertas da Semana" className={styles.productTitle} />
       <ProductList products={productsData} itemsToShow={itemsToShow} />
+      <div>s</div>
+      <div>s</div>
+      <div>s</div>
+      <div>s</div>
+      <div>s</div>
+      <div>s</div>
+      <div>s</div>
     </>
   );
 }
